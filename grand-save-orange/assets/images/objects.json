@@ -1,0 +1,132 @@
+{
+  "frames": {
+    "box": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 168,
+        "h": 168
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 168,
+        "h": 168
+      },
+      "sourceSize": {
+        "w": 168,
+        "h": 168
+      }
+    },
+    "barrier": {
+      "frame": {
+        "x": 2,
+        "y": 174,
+        "w": 336,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 336,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 336,
+        "h": 112
+      }
+    },
+    "car": {
+      "frame": {
+        "x": 2,
+        "y": 290,
+        "w": 336,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 336,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 336,
+        "h": 112
+      }
+    },
+    "packages": {
+      "frame": {
+        "x": 2,
+        "y": 406,
+        "w": 144,
+        "h": 144
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 144,
+        "h": 144
+      },
+      "sourceSize": {
+        "w": 144,
+        "h": 144
+      }
+    },
+    "life": {
+      "frame": {
+        "x": 2,
+        "y": 554,
+        "w": 144,
+        "h": 144
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 144,
+        "h": 144
+      },
+      "sourceSize": {
+        "w": 144,
+        "h": 144
+      }
+    },
+    "package": {
+      "frame": {
+        "x": 2,
+        "y": 702,
+        "w": 48,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 64
+      }
+    }
+  },
+  "meta": {
+    "image": "objects.png",
+    "size": {
+      "w": 340,
+      "h": 770
+    },
+    "scale": "1"
+  }
+}
