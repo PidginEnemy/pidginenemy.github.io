@@ -1,5 +1,15 @@
 # Ассеты Grand Save Orange
 
+## Иллюстрация стартового экрана
+
+`images/title-screen.png` — 1536 × 1024, непрозрачный PNG. Создана 2026-11-17 встроенным OpenAI imagegen для нового стартового меню. Перед генерацией осмотрены существующие `courier.png` и `truck.png`; их палитра и стиль переданы текстовым описанием. Исходные спрайты не изменены. Результат скопирован без редактирования; в интерфейсе адаптивно кадрируется CSS. Сторонние стоки не использованы.
+
+Промпт встроенного инструмента:
+
+```text
+Use case: stylized-concept. Asset type: main title-screen illustration for the existing browser arcade Grand Save Orange, wide landscape 3:2. Create a lively clean 2D cartoon game illustration based on these established game graphics, described here: bold thick dark navy outlines, bright orange, warm cream and teal flat fills with broad glossy highlights, no grain, no photorealism. Scene: a courier in a teal jacket and orange helmet riding a compact electric bicycle, seen from behind and slightly above, chasing an orange-cab cream delivery truck with open rear doors along a city road. The courier has a large square orange delivery backpack with a simple white bowl/semicircle mark, flat top and rounded lower half. A few orange bank cards tumble out of the truck and lead toward the courier. Include the familiar orange-and-cream striped road barrier, one cardboard box, teal sidewalk plants, dark slate road and cream lane markings. Energetic diagonal perspective and playful arcade speed, all elements large, clear, charming and readable on a mobile title screen. Fill the entire composition edge to edge; main truck and courier fully visible within the central 80% so the art works on narrower screens too. No lettering, title, typography, UI, buttons, watermarks or extra logos. This is illustration only; the actual title and menu are rendered separately below the image.
+```
+
 ## Пользовательские оригиналы
 
 - `docs/references/apelsin-mark.webp` — знак и оранжевый цвет, предоставленные пользователем. Референс сумки курьера; оригинал не изменён.

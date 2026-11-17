@@ -6,69 +6,138 @@
     <meta name="theme-color" content="#17252a" />
     <link rel="icon" href="data:," />
     <title>Grand Save Orange</title>
-    <script type="module" crossorigin src="./assets/index-CDiSQecx.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Da8Gsa92.css">
+    <script type="module" crossorigin src="./assets/index-7NXzd7Ag.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BvwKXSG5.css">
   </head>
   <body>
     <header>
       <h1>Grand Save Orange</h1>
-      <p>Карты: <output id="score-count" aria-label="Собранные карты">0</output> · Пакеты: <output id="package-count" aria-label="Запас пакетов">10 / 10</output> · Жизни: <output id="lives-count" aria-label="Оставшиеся жизни">3 / 3</output></p>
-      <button id="pause" type="button" aria-keyshortcuts="Escape" disabled>Пауза</button>
-      <p id="run-status" role="status">Загрузка…</p>
+      <p id="run-status" class="visually-hidden" role="status">Загрузка…</p>
       <p data-storage-status role="status" hidden>Сохранение недоступно. Рекорд и настройки останутся только до обновления страницы.</p>
     </header>
     <main class="play-area">
-      <div id="game" tabindex="-1" role="img" aria-label="Курьер собирает карты за грузовиком и объезжает препятствия. Управление: стрелки влево/вправо или физические клавиши A/D; пробел — стрелять; Escape — пауза."></div>
-      <div class="touch-controls" role="group" aria-label="Управление курьером">
-        <div class="direction-controls">
-          <button id="move-left" type="button" aria-label="Двигаться влево" aria-keyshortcuts="ArrowLeft A" disabled>←</button>
-          <button id="move-right" type="button" aria-label="Двигаться вправо" aria-keyshortcuts="ArrowRight D" disabled>→</button>
+      <div class="game-frame">
+        <div id="game" tabindex="-1" role="img" aria-label="Курьер собирает карты за грузовиком и объезжает препятствия. Управление: стрелки влево/вправо или физические клавиши A/D; пробел — стрелять; Escape — пауза."></div>
+        <div class="hud" role="group" aria-label="Ресурсы забега">
+          <span class="hud-stat" title="Собранные карты">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="card-icon"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M3 10h18M6 15h5"/></svg>
+            <output id="score-count" aria-label="Собранные карты">0</output>
+          </span>
+          <span class="hud-stat" title="Оставшиеся жизни">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="heart-icon"><path d="M12 21 3.5 12.5C-3 6 6 0 12 6 18 0 27 6 20.5 12.5Z"/></svg>
+            <output id="lives-count" aria-label="Оставшиеся жизни">3 / 3</output>
+          </span>
+          <span class="hud-stat" title="Запас пакетов">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="package-icon"><path d="M4 7h16l1 14H3ZM8 7V5a4 4 0 0 1 8 0v2M8 12h8"/></svg>
+            <output id="package-count" aria-label="Запас пакетов">10 / 10</output>
+          </span>
+          <span class="hud-stat hud-clock" title="Время в раунде">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6M12 2v3"/></svg>
+            <output id="time-count" aria-label="Время в раунде">00:00</output>
+          </span>
+          <button id="pause" type="button" aria-label="Пауза" aria-keyshortcuts="Escape" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+          </button>
         </div>
-        <button id="fire" type="button" aria-keyshortcuts="Space" disabled>Огонь</button>
+        <div class="touch-controls" role="group" aria-label="Управление курьером">
+          <button id="move-left" type="button" aria-label="Двигаться влево" aria-keyshortcuts="ArrowLeft A" disabled>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="m15 6-10 10 10 10M5 16h23"/></svg>
+          </button>
+          <button id="fire" type="button" aria-label="Огонь" aria-keyshortcuts="Space" disabled>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="m16 2 3 8 8-3-3 8 6 5-9 1-5 9-4-9-10-1 7-6-3-7 8 3Z"/></svg>
+          </button>
+          <button id="move-right" type="button" aria-label="Двигаться вправо" aria-keyshortcuts="ArrowRight D" disabled>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="m17 6 10 10-10 10M27 16H4"/></svg>
+          </button>
+        </div>
       </div>
     </main>
-    <dialog id="menus" aria-labelledby="menu-title">
-      <h2 id="menu-title">На старт</h2>
+    <dialog id="menus" aria-labelledby="menu-title" data-current-screen="start">
+      <img class="menu-art" src="./assets/images/title-screen.png" alt="Курьер с оранжевой сумкой догоняет грузовик, из которого вылетают карты" width="1536" height="1024" fetchpriority="high" />
+      <div class="menu-content">
+      <h2 id="menu-title">Grand Save Orange</h2>
       <p data-storage-status role="status" hidden>Сохранение недоступно. Рекорд и настройки останутся только до обновления страницы.</p>
       <section data-screen="start">
-        <p>Грузовик теряет карты! Догоняйте его на электровелосипеде, собирайте карты и объезжайте препятствия.</p>
-        <p>← / → или A / D — движение, пробел — выстрел, Escape — пауза. На телефоне удерживайте кнопки под дорогой.</p>
-        <p>Личный рекорд: <strong data-best>0</strong></p>
-        <p class="menu-note">Рекорд и настройки сохраняются в этом браузере.</p>
-        <div class="menu-actions">
+        <p class="start-tagline">Погоня за каждой картой</p>
+        <nav class="menu-actions" aria-label="Главное меню">
           <button type="button" data-action="restart" class="primary">Играть</button>
+          <button type="button" data-action="help">Как играть</button>
+          <button type="button" data-action="record">Рекорд</button>
           <button type="button" data-action="settings">Настройки</button>
-        </div>
+        </nav>
+        <p class="menu-hint"><kbd>↑</kbd><kbd>↓</kbd> выбор <span>·</span> <kbd>Enter</kbd> открыть <span>·</span> <kbd>Esc</kbd> назад</p>
       </section>
       <section data-screen="pause" hidden>
         <p>Погоня ждёт. Продолжите забег или начните новую попытку.</p>
         <div class="menu-actions">
           <button type="button" data-action="resume" class="primary">Продолжить</button>
           <button type="button" data-action="restart">Начать заново</button>
+          <button type="button" data-action="help">Как играть</button>
           <button type="button" data-action="settings">Настройки</button>
           <button type="button" data-action="home">На старт</button>
         </div>
       </section>
       <section data-screen="result" hidden>
-        <p>Собрано карт: <strong id="result-score">0</strong></p>
-        <p>Личный рекорд: <strong data-best>0</strong></p>
+        <p class="menu-note">Грузовик ушёл. Ещё одна попытка?</p>
+        <dl class="record-stats">
+          <div><dt>Время в раунде</dt><dd id="result-time">00:00</dd></div>
+          <div><dt>Собрано карт</dt><dd id="result-score">0</dd></div>
+        </dl>
+        <p class="menu-note">Лучшее время: <strong data-best-time>00:00</strong><br />Максимум карт: <strong data-best>0</strong></p>
         <p id="new-record" hidden>Новый рекорд!</p>
         <div class="menu-actions">
           <button type="button" data-action="restart" class="primary">Ещё раз</button>
           <button type="button" data-action="home">На старт</button>
         </div>
       </section>
+      <section data-screen="help" hidden>
+        <div class="help-content">
+          <h3>Догоняй. Собирай. Продержись.</h3>
+          <p>Вы — курьер на электровелосипеде. Вы едете вперёд автоматически, можете свободно двигаться влево/вправо по всей ширине дороги. Хватайте карты и объезжайте препятствия, стреляйте в коробки, если не успеваете объехать.</p>
+          <h3>Что на дороге</h3>
+          <ul class="game-legend">
+            <li><img src="./assets/card-CXri0gAn.png" class="legend-card" alt="" width="442" height="700" /><div><strong>Карты</strong><p>Подбор карты дает +1 к счету, пропускать карты допускается.</p></div></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true" class="heart-icon"><path d="M12 21 3.5 12.5C-3 6 6 0 12 6 18 0 27 6 20.5 12.5Z"/></svg><div><strong>Жизни</strong><p>На старте их 3. Столкновение с препятствием отнимает 1; после удара курьер мигает и неуязвим примерно секунду. На нуле раунд заканчивается.</p></div></li>
+            <li><svg viewBox="2 702 48 64" aria-hidden="true"><image href="./assets/images/objects.png" width="340" height="770" /></svg><div><strong>Пакеты</strong><p>На старте 10 пакетов. Один выстрел тратит 1 пакет и попадает только в первое препятствие на пути. Удерживайте огонь для стрельбы сериями.</p></div></li>
+            <li><svg viewBox="2 2 168 168" aria-hidden="true"><image href="./assets/images/objects.png" width="340" height="770" /></svg><div><strong>Коробка</strong><p>Разрушается одним выстрелом. Можно объехать.</p></div></li>
+            <li><span class="legend-heavy"><svg viewBox="2 174 336 112" aria-hidden="true"><image href="./assets/images/objects.png" width="340" height="770" /></svg><svg viewBox="2 290 336 112" aria-hidden="true"><image href="./assets/images/objects.png" width="340" height="770" /></svg></span><div><strong>Барьер и машина</strong><p>Не разрушаются выстелами, можно только объехать.</p></div></li>
+            <li><svg viewBox="2 406 144 144" aria-hidden="true"><image href="./assets/images/objects.png" width="340" height="770" /></svg><div><strong>Бирюзовый бокс «+5»</strong><p>Подбор дает +5 пакетов, но не больше 10 в запасе.</p></div></li>
+            <li><svg viewBox="2 554 144 144" aria-hidden="true"><image href="./assets/images/objects.png" width="340" height="770" /></svg><div><strong>Аптечка</strong><p>Восстанавливает 1 жизнь, максимум — 3.</p></div></li>
+            <li><img src="./assets/images/truck.png" alt="" width="256" height="448" /><div><strong>Грузовик</strong><p>Движется хаотичной траектории, всегда впереди вас.</p></div></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6M12 2v3"/></svg><div><strong>Таймер и рекорды</strong><p>Таймер считает только время игры. Лучшее время и максимум карт сохраняются независимо.</p></div></li>
+          </ul>
+          <h3>Управление</h3>
+          <dl class="control-list">
+            <div><dt><kbd>←</kbd> <kbd>→</kbd> / <kbd>A</kbd> <kbd>D</kbd></dt><dd>Двигаться влево / вправо. A и D работают и в русской раскладке.</dd></div>
+            <div><dt><kbd>Пробел</kbd></dt><dd>Стрелять пакетами.</dd></div>
+            <div><dt><kbd>Esc</kbd> / <span aria-label="значок паузы">Ⅱ</span></dt><dd>Пауза и продолжение раунда.</dd></div>
+          </dl>
+          <p>На телефоне удерживайте стрелки внизу поля для движения, значок вспышки в центре — для огня. Можно двигаться и стрелять одновременно разными пальцами. Если отпустить кнопку или увести палец за её край, команда прекратится.</p>
+          <p>При переключении вкладки, потере фокуса окна или повороте экрана игра встаёт на паузу. Для возврата выберите «Продолжить». Новая попытка сбрасывает время, карты и ресурсы.</p>
+          <p class="menu-note">В меню: стрелки выбирают пункт, Enter открывает его, Esc возвращает назад. Здесь ↑ / ↓ прокручивают инструкцию. Рекорды и звук сохраняются в этом браузере; после обновления страницы текущий раунд не восстанавливается.</p>
+        </div>
+        <div class="menu-actions"><button type="button" data-action="back">Назад</button></div>
+      </section>
+      <section data-screen="record" hidden>
+        <p class="menu-note">Ваши лучшие результаты</p>
+        <dl class="record-stats">
+          <div><dt>Лучшее время</dt><dd data-best-time>00:00</dd></div>
+          <div><dt>Максимум карт</dt><dd data-best>0</dd></div>
+        </dl>
+        <p class="menu-note">Два независимых рекорда — они могут быть из разных раундов. Сохраняются в этом браузере.</p>
+        <div class="menu-actions"><button type="button" data-action="back">Назад</button></div>
+      </section>
       <section data-screen="settings" hidden>
         <p class="menu-note">Музыка и эффекты звучат во время забега. Ваш выбор сохраняется.</p>
         <fieldset>
-          <legend>Управление и звук</legend>
-          <label><input id="mirrored" type="checkbox" /> Зеркальная раскладка</label>
+          <legend>Звук</legend>
           <label><input id="sound" type="checkbox" checked /> Звук</label>
         </fieldset>
         <div class="menu-actions">
           <button type="button" data-action="back" class="primary">Назад</button>
         </div>
       </section>
+      </div>
     </dialog>
     <noscript>Для запуска игры включите JavaScript.</noscript>
   </body>
